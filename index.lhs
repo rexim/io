@@ -38,6 +38,8 @@ bubbleSort xs = do
 \end{code}
 \end{frame}
 
+%% TODO: Definition of IO before Rules of IO section
+
 \input{rulesofio.lhs}
 
 \begin{frame}
