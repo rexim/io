@@ -40,5 +40,10 @@ bubbleSort xs = do
 
 \input{rulesofio.lhs}
 
+\begin{frame}
+But what is IO?
+\end{frame}
+
+\input{io.lhs}
 
 \end{document}

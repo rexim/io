@@ -7,4 +7,5 @@
 *.snm
 *.toc
 *.vrb
+*.pyg
 _minted-index/
