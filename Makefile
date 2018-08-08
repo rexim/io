@@ -1,11 +1,11 @@
-PDFS=$(patsubst %.lhs,%.pdf,$(wildcard *.lhs))
+LHSS=$(wildcard *.lhs)
 
-all: $(PDFS)
+all: index.pdf
 
-%.pdf: %.lhs
-	pdflatex -shell-escape $<
+index.pdf: $(LHSS)
+	pdflatex -shell-escape index.lhs
 
-watch: index.lhs
-	while inotifywait -q -e modify,move_self index.lhs; do \
+watch: $(LHSS)
+	while inotifywait -q -e modify,move_self $(LHSS); do \
 		pdflatex -halt-on-error -shell-escape index.lhs;   \
 	done
