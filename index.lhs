@@ -15,6 +15,7 @@
 
 \frame{\titlepage}
 
+%% TODO: put Bubble Sort after the Rules of IO to shock the audience
 \begin{frame}[fragile]
 \frametitle{Bubble Sort}
 \ignore{
