@@ -42,9 +42,11 @@ bubbleSort xs = do
 \frametitle{Rules of IO}
 
 \begin{enumerate}
-\item You can never unwrap IO
-\item \verb|do|-block returns IO
-\item
+\item IO encapsulates an action with a side effect
+\item Several IO-s can be sequenced with a \verb|do|-block
+\item \verb|do|-block itself has IO type
+\item \verb|return| wraps pure values in IO
+\item You can only unwrap IO inside of a \verb|do|-block
 \end{enumerate}
 
 \end{frame}
