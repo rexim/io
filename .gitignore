@@ -1,3 +1,4 @@
+# LaTeX
 *.aux
 *.l  
 *.log
@@ -9,3 +10,8 @@
 *.vrb
 *.pyg
 _minted-index/
+
+# Haskell
+*.hi
+*.o
+index
