@@ -15,7 +15,16 @@
 
 \frame{\titlepage}
 
-%% TODO: put Bubble Sort after the Rules of IO to shock the audience
+\begin{frame}[fragile]
+  \begin{center}
+    \Huge What is IO?
+  \end{center}
+\end{frame}
+
+%% TODO: Definition of IO before Rules of IO section
+
+\input{rulesofio.lhs}
+
 \begin{frame}[fragile]
 \frametitle{Bubble Sort}
 \ignore{
@@ -38,10 +47,6 @@ bubbleSort xs = do
                writeArray xs j x
 \end{code}
 \end{frame}
-
-%% TODO: Definition of IO before Rules of IO section
-
-\input{rulesofio.lhs}
 
 \begin{frame}
 But what is IO?
