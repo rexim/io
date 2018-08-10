@@ -78,9 +78,9 @@ whatIsYourName =
   \frametitle{Quick Sort}
 \begin{code}
 qsort [] = []
-qsort (pivot:rest) = qsort left ++ (pivot : qsort right)
-  where left = [x | x <- rest, x <= pivot]
-        right = [x | x <- rest, x > pivot]
+qsort (pivot:rest) = qsort left ++ [pivot] ++ qsort right
+  where left  = [x | x <- rest, x <= pivot]
+        right = [x | x <- rest, x >  pivot]
 \end{code}
 \end{frame}
 
