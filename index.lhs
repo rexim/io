@@ -55,7 +55,7 @@ intString = return "Foo" -- return wraps String into IO
   \frametitle{IO can encapsulate an action with a side effect}
 \begin{minted}{haskell}
 getLine :: IO String
-putStrLn :: String -> IO ()
+putStrLn :: String -> IO () -- () is basically void type
 readFile :: FilePath -> IO String
 system :: String -> IO ExitCode
 \end{minted}
@@ -65,7 +65,7 @@ system :: String -> IO ExitCode
   \frametitle{Several IO actions can be sequenced with a do-block}
 \begin{code}
 -- do-block itself is IO
-whatIsYourName :: IO () -- () is basically void type
+whatIsYourName :: IO ()
 whatIsYourName =
     do putStrLn "What is your name?"
        name <- getLine  -- arrow unwraps IO
