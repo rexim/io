@@ -6,6 +6,7 @@ let
       minted
       fancyvrb
       float
+      fvextra
       ifplatform
       etoolbox
       xstring
@@ -13,6 +14,7 @@ let
       framed
       xcolor
       beamer
+      upquote
       ms
       csquotes;
   };
