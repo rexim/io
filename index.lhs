@@ -106,4 +106,6 @@ bubbleSort xs = do
   \end{center}
 \end{frame}
 
+%% TODO: World transformer POV of IO
+
 \end{document}
