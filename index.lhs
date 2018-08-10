@@ -106,6 +106,4 @@ bubbleSort xs = do
   \end{center}
 \end{frame}
 
-\input{io.lhs}
-
 \end{document}
