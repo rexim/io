@@ -25,6 +25,8 @@ main = undefined
 
 \frame{\titlepage}
 
+%% TODO: introduce yourself
+
 \begin{frame}[fragile]
   \begin{center}
     \Huge What is IO?
@@ -72,6 +74,15 @@ whatIsYourName =
 \end{frame}
 
 %% \input{rulesofio.lhs}
+\begin{frame}[fragile]
+  \frametitle{Quick Sort}
+\begin{code}
+qsort [] = []
+qsort (pivot:rest) = qsort left ++ (pivot : qsort right)
+  where left = [x | x <- rest, x <= pivot]
+        right = [x | x <- rest, x > pivot]
+\end{code}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Bubble Sort}
@@ -90,7 +101,9 @@ bubbleSort xs = do
 \end{frame}
 
 \begin{frame}
-But what is IO?
+  \begin{center}
+    \Huge But what IO actually is?
+  \end{center}
 \end{frame}
 
 \input{io.lhs}
