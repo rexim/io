@@ -6,11 +6,13 @@
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}{haskell}}{\end{minted}}
 \long\def\ignore#1{}
 
+%% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
 \begin{code}
 import Control.Monad
 import Data.Array.IO
 import Data.Foldable
+main = undefined
 \end{code}
 }
 
@@ -30,7 +32,7 @@ import Data.Foldable
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{IO is a Container}
+  \frametitle{IO is a container}
 \begin{code}
 -- Comments just like in SQL
 
@@ -44,6 +46,28 @@ intIO = return 42        -- return wraps Int into IO
 
 intString :: IO String   -- (IO String) holds String
 intString = return "Foo" -- return wraps String into IO
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{IO can encapsulate an action with a side effect}
+\begin{minted}{haskell}
+getLine :: IO String
+putStrLn :: String -> IO ()
+readFile :: FilePath -> IO String
+system :: String -> IO ExitCode
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Several IO actions can be sequenced with a do-block}
+\begin{code}
+-- do-block itself is IO
+whatIsYourName :: IO () -- () is basically void type
+whatIsYourName =
+    do putStrLn "What is your name?"
+       name <- getLine  -- arrow unwraps IO
+       putStrLn ("Hello " ++ name)
 \end{code}
 \end{frame}
 
