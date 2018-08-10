@@ -6,6 +6,14 @@
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}{haskell}}{\end{minted}}
 \long\def\ignore#1{}
 
+\ignore{
+\begin{code}
+import Control.Monad
+import Data.Array.IO
+import Data.Foldable
+\end{code}
+}
+
 \title{IO}
 \author{Alexey Kutepov}
 \institute{Tsoding}
@@ -21,19 +29,28 @@
   \end{center}
 \end{frame}
 
-%% TODO: Definition of IO before Rules of IO section
+\begin{frame}[fragile]
+  \frametitle{IO is a Container}
+\begin{code}
+-- Comments just like in SQL
 
-\input{rulesofio.lhs}
+-- Signature
+int :: Int
+-- Definition
+int = 42
+
+intIO :: IO Int          -- (IO Int) holds Int
+intIO = return 42        -- return wraps Int into IO
+
+intString :: IO String   -- (IO String) holds String
+intString = return "Foo" -- return wraps String into IO
+\end{code}
+\end{frame}
+
+%% \input{rulesofio.lhs}
 
 \begin{frame}[fragile]
 \frametitle{Bubble Sort}
-\ignore{
-\begin{code}
-import Control.Monad
-import Data.Array.IO
-import Data.Foldable
-\end{code}
-}
 \begin{code}
 bubbleSort :: IOArray Int Int -> IO ()
 bubbleSort xs = do
