@@ -25,6 +25,10 @@ main = undefined
 
 \frame{\titlepage}
 
+\begin{frame}
+  %% Blank
+\end{frame}
+
 %% TODO: introduce yourself
 
 \begin{frame}[fragile]
