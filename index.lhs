@@ -82,6 +82,7 @@ whatIsYourName =
 \begin{frame}[fragile]
   \frametitle{Quick Sort}
 \begin{code}
+qsort :: [Int] -> [Int]
 qsort [] = []
 qsort (p:xs) = qsort left ++ [p] ++ qsort right
   where left  = [x | x <- xs, x <= p]
