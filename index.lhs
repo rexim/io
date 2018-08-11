@@ -23,13 +23,17 @@ main = undefined
 
 \begin{document}
 
+%% TODO: hints for the next slide
+
 \frame{\titlepage}
 
 \begin{frame}
   %% Blank
 \end{frame}
 
-%% TODO: introduce yourself
+%% TODO: introduce yourself?
+
+%% TODO: what is functional programming?
 
 \begin{frame}[fragile]
   \begin{center}
