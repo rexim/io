@@ -42,10 +42,8 @@ main = undefined
 \begin{code}
 -- Comments just like in SQL
 
--- Signature
-int :: Int
--- Definition
-int = 42
+int :: Int               -- Signature
+int = 42                 -- Definition
 
 intIO :: IO Int          -- (IO Int) holds Int
 intIO = return 42        -- return wraps Int into IO
@@ -68,11 +66,10 @@ system :: String -> IO ExitCode
 \begin{frame}[fragile]
   \frametitle{Several IO actions can be sequenced with a do-block}
 \begin{code}
--- do-block itself is IO
-whatIsYourName :: IO ()
+whatIsYourName :: IO ()    -- do-block itself is IO
 whatIsYourName =
     do putStrLn "What is your name?"
-       name <- getLine  -- arrow unwraps IO
+       name <- getLine     -- arrow unwraps IO
        putStrLn ("Hello " ++ name)
 \end{code}
 \end{frame}
