@@ -16,6 +16,7 @@ let
       beamer
       upquote
       ms
+      textpos
       csquotes;
   };
 in rec {

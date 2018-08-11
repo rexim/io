@@ -2,9 +2,18 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{minted}
+\usepackage{pgfpages}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{color}
 
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}{haskell}}{\end{minted}}
 \long\def\ignore#1{}
+
+\newcommand{\nextslide}[1]{%
+\begin{textblock}{1.0}(15,15)%
+{\color{gray} \tiny #1}%
+\end{textblock}%
+}
 
 %% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
@@ -23,22 +32,49 @@ main = undefined
 
 \begin{document}
 
-%% TODO: hints for the next slide
-
 \frame{\titlepage}
 
 \begin{frame}
   %% Blank
+  \nextslide{wipfp?}
 \end{frame}
 
 %% TODO: introduce yourself?
 
-%% TODO: what is functional programming?
+\begin{frame}[fragile]
+  \begin{center}
+    \Huge What is Pure FP?
+  \end{center}
+  \nextslide{wipp?}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What is Procedural Programming?}
+  \begin{minted}{c}
+    proc() {
+      proc1();
+      proc2();
+      proc3();
+      ...
+    }
+  \end{minted}
+  \nextslide{wipfp?}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What is Pure Functional Programming?}
+  \begin{itemize}
+  \item \verb|f1(f2(f3(...)))| \pause
+  \item $f_1 \circ f_2 \circ f_3 \circ \ldots \circ f_n $
+  \end{itemize}
+  \nextslide{wiio?}
+\end{frame}
 
 \begin{frame}[fragile]
   \begin{center}
     \Huge What is IO?
   \end{center}
+  \nextslide{cont}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -55,6 +91,7 @@ intIO = return 42        -- return wraps Int into IO
 intString :: IO String   -- (IO String) holds String
 intString = return "Foo" -- return wraps String into IO
 \end{code}
+\nextslide{action}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -65,6 +102,7 @@ putStrLn :: String -> IO () -- () is "void" type
 readFile :: FilePath -> IO String
 system :: String -> IO ExitCode
 \end{minted}
+\nextslide{do}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -76,6 +114,7 @@ whatIsYourName =
        name <- getLine   -- arrow unwraps IO
        putStrLn ("Hello " ++ name)
 \end{code}
+\nextslide{qsort}
 \end{frame}
 
 %% \input{rulesofio.lhs}
@@ -88,6 +127,7 @@ qsort (p:xs) = qsort left ++ [p] ++ qsort right
   where left  = [x | x <- xs, x <= p]
         right = [x | x <- xs, x >  p]
 \end{code}
+\nextslide{bubble}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -104,6 +144,7 @@ bubbleSort xs = do
             do writeArray xs i y
                writeArray xs j x
 \end{code}
+\nextslide{wiio?}
 \end{frame}
 
 \begin{frame}
