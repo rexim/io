@@ -21,6 +21,7 @@
 import Control.Monad
 import Data.Array.IO
 import Data.Foldable
+import System.IO.Unsafe
 main = undefined
 \end{code}
 }
@@ -153,6 +154,36 @@ bubbleSort xs = do
   \end{center}
 \end{frame}
 
-%% TODO: World transformer POV of IO
+\begin{frame}[fragile]
+\begin{code}
+-- TODO: explain what is `deriving Show`
+data World = World deriving Show
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{code}
+printStr :: String -> World -> World
+-- TODO: printStr implementation should not be visible
+printStr s w = unsafePerformIO (putStrLn s >> return w)
+
+readStr :: World -> (World, String)
+-- TODO: readStr implementation should not be visible
+readStr w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{code}
+-- TODO: whatIsYourPureName doesn't perform actions in the right order
+whatIsYourPureName :: World -> World
+whatIsYourPureName w1 = w4
+    where w2         = printStr "What is your name?" w1
+          (w3, name) = readStr w2
+          w4         = printStr ("Hello " ++ name) w3
+\end{code}
+\end{frame}
+
+%% TODO: Introduce branching world problem
 
 \end{document}
