@@ -51,6 +51,7 @@ main = undefined
 
 \begin{frame}[fragile]
   \frametitle{What is Procedural Programming?}
+  \pause
   \begin{minted}{c}
     proc() {
       proc1();
@@ -64,6 +65,7 @@ main = undefined
 
 \begin{frame}[fragile]
   \frametitle{What is Pure Functional Programming?}
+  \pause
   \begin{itemize}
   \item \verb|f1(f2(f3(...)))| \pause
   \item $f_1 \circ f_2 \circ f_3 \circ \ldots \circ f_n $
@@ -80,15 +82,22 @@ main = undefined
 
 \begin{frame}[fragile]
   \frametitle{IO is a container}
+  \pause
 \begin{code}
 -- Comments just like in SQL
-
+\end{code}
+\pause
+\begin{code}
 int :: Int               -- Signature
 int = 42                 -- Definition
-
+\end{code}
+\pause
+\begin{code}
 intIO :: IO Int          -- (IO Int) holds Int
 intIO = return 42        -- return wraps Int into IO
-
+\end{code}
+\pause
+\begin{code}
 intString :: IO String   -- (IO String) holds String
 intString = return "Foo" -- return wraps String into IO
 \end{code}
