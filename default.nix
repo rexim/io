@@ -17,6 +17,8 @@ let
       upquote
       ms
       textpos
+      qrcode
+      xkeyval
       csquotes;
   };
 in rec {

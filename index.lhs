@@ -5,6 +5,7 @@
 \usepackage{pgfpages}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{color}
+\usepackage{qrcode}
 
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}{haskell}}{\end{minted}}
 \long\def\ignore#1{}
@@ -39,7 +40,6 @@ main = undefined
 \nextslide{who?}
 \end{frame}
 
-%% TODO: introduce yourself?
 \begin{frame}
 \frametitle{Who am I?}
 \pause
@@ -74,7 +74,15 @@ main = undefined
   \begin{textblock}{1.0}(12, 5)
     \includegraphics[scale=0.06]{imgs/youtube.png}
   \end{textblock}
+  \nextslide{hr}
+\end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{HaskellRank}
+  \begin{center}
+    %% TODO: QR code is to complex
+    \qrcode[height=2in]{https://www.youtube.com/playlist?list=PLguYJK7ydFE4aS8fq4D6DqjF6qsysxTnx}
+  \end{center}
 \nextslide{wipfp?}
 \end{frame}
 
