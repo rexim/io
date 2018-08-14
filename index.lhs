@@ -28,7 +28,6 @@ main = undefined
 
 \title{IO}
 \author{Alexey Kutepov}
-\institute{Tsoding}
 \date{2018}
 
 \begin{document}
@@ -37,10 +36,22 @@ main = undefined
 
 \begin{frame}
   %% Blank
-  \nextslide{wipfp?}
+\nextslide{who?}
 \end{frame}
 
 %% TODO: introduce yourself?
+\begin{frame}
+\frametitle{Who am I?}
+\pause
+\begin{itemize}
+  \itemsep20pt
+\item Alexey Kutepov \pause
+\item Unemployed \pause
+\item Occasional Freelancer \pause
+\item Jack of All Trades
+\end{itemize}
+\nextslide{tso}
+\end{frame}
 
 \begin{frame}[fragile]
   \begin{center}
