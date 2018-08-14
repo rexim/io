@@ -54,6 +54,31 @@ main = undefined
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Project Tsoding}
+  \begin{center}
+    \Huge {\color{gray} @}tsoding
+  \end{center}
+
+  \begin{textblock}{1.0}(1.5, 7)
+    \includegraphics[scale=0.4]{imgs/GitHub-Mark-120px-plus.png}
+  \end{textblock}
+
+  \begin{textblock}{1.0}(5, 2)
+    \includegraphics[scale=0.4]{imgs/Glitch_Purple_RGB.png}
+  \end{textblock}
+
+  \begin{textblock}{1.0}(8, 10)
+    \includegraphics[scale=0.2]{imgs/Twitter_Logo_Blue.png}
+  \end{textblock}
+
+  \begin{textblock}{1.0}(12, 5)
+    \includegraphics[scale=0.06]{imgs/youtube.png}
+  \end{textblock}
+
+\nextslide{wipfp?}
+\end{frame}
+
+\begin{frame}[fragile]
   \begin{center}
     \Huge What is Pure FP?
   \end{center}
