@@ -301,7 +301,9 @@ type WorldT a = World -> (World, a)
 
 \end{code}
 \end{frame}
-%% TODO: Introduce World -> (World, a) and it's composition
+%% TODO: Define printStrT and readStrT for WorldT
+
+%% TODO: Implement whatIsYourPureNameT with WorldT compositions
 
 %% TODO: Introduce branching world problem
 
