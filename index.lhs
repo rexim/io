@@ -210,10 +210,17 @@ bubbleSort xs = do
 \end{frame}
 
 \begin{frame}[fragile]
+\frametitle{Pure World}
 \begin{code}
--- TODO: explain what is `deriving Show`
-data World = World deriving Show
+data World = World
 \end{code}
+\ignore{
+\begin{code}
+-- Deriving Show for World under the hood. Show is very important for
+-- forcing the actual evaluation of the World expression in REPL.
+             deriving Show
+\end{code}
+}
 \end{frame}
 
 \begin{frame}[fragile]
