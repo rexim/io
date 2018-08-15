@@ -311,7 +311,15 @@ printStrT s w = (printStr s w, ())
 \end{code}
 \end{frame}
 
-%% TODO: Implement whatIsYourPureNameT with WorldT compositions
+\begin{frame}[fragile]
+\begin{code}
+whatIsYourPureNameT :: WorldT ()
+whatIsYourPureNameT =
+    printStrT "What is your name?" >>>= \_ ->
+    readStrT                       >>>= \name ->
+    printStrT ("Hello " ++ name)
+\end{code}
+\end{frame}
 
 %% TODO: Introduce branching world problem
 
