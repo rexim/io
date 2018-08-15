@@ -321,6 +321,8 @@ whatIsYourPureNameT =
 \end{code}
 \end{frame}
 
+%% TODO: integrate WorldT into the do-block
+
 \begin{frame}[fragile]
 \begin{code}
 branch :: World -> (World, World)
