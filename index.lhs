@@ -233,11 +233,11 @@ printStr s !w = unsafePerformIO (putStrLn s >> return w)
 }
 \pause
 \begin{code}
-readStr :: World -> (World, String)
+readStr :: World -> (String, World)
 \end{code}
 \ignore{
 \begin{code}
-readStr !w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
+readStr !w = unsafePerformIO (getLine >>= (\s -> return (s, w)))
 \end{code}
 }
 \nextslide{wiypn?}
@@ -249,7 +249,7 @@ whatIsYourPureName :: World -> World
 whatIsYourPureName w1 = w4
     where
       w2         = printStr "What is your name?" w1
-      (w3, name) = readStr w2
+      (name, w3) = readStr w2
       w4         = printStr ("Hello " ++ name) w3
 \end{code}
 \nextslide{curry}
@@ -287,12 +287,12 @@ g(10)(20); // => 30
   \nextslide{worldT}
 \end{frame}
 
-%% TODO: explain the duality of time `a -> WorldT b` as `a -> World -> (World, b)`
+%% TODO: explain the duality of time `a -> WorldT b` as `a -> World -> (b, World)`
 \begin{frame}[fragile]
   \frametitle{World Transformer}
   \pause
 \begin{code}
-type WorldT a = World -> (World, a)
+type WorldT a = World -> (a, World)
 
 -- readStr :: World -> (World, String)
 readStrT :: WorldT String
@@ -300,13 +300,14 @@ readStrT = readStr
 
 -- printStr :: String -> World -> World
 printStrT :: String -> WorldT ()
-printStrT s w = (printStr s w, ())
+printStrT s w = ((), printStr s w)
 
 (>>>=) :: WorldT a
        -> (a -> WorldT b)
        -> WorldT b
-(>>>=) wt f world1 = f x world2
-    where (world2, x) = wt world1
+-- TODO: explain uncurry
+-- TODO: explain how >>>= implementation makes sense
+(>>>=) wt f = uncurry f . wt
 
 \end{code}
 \end{frame}
