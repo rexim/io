@@ -294,6 +294,14 @@ g(10)(20); // => 30
 \begin{code}
 type WorldT a = World -> (World, a)
 
+-- readStr :: World -> (World, String)
+readStrT :: WorldT String
+readStrT = readStr
+
+-- printStr :: String -> World -> World
+printStrT :: String -> WorldT ()
+printStrT s w = (printStr s w, ())
+
 (>>>=) :: WorldT a
        -> (a -> WorldT b)
        -> WorldT b
@@ -301,7 +309,6 @@ type WorldT a = World -> (World, a)
 
 \end{code}
 \end{frame}
-%% TODO: Define printStrT and readStrT for WorldT
 
 %% TODO: Implement whatIsYourPureNameT with WorldT compositions
 
