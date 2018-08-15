@@ -216,15 +216,25 @@ data World = World deriving Show
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Side-effects in Pure World}
+  \pause
 \begin{code}
 printStr :: String -> World -> World
--- TODO: printStr implementation should not be visible
+\end{code}
+\ignore{
+\begin{code}
 printStr s w = unsafePerformIO (putStrLn s >> return w)
-
+\end{code}
+}
+\pause
+\begin{code}
 readStr :: World -> (World, String)
--- TODO: readStr implementation should not be visible
+\end{code}
+\ignore{
+\begin{code}
 readStr w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
 \end{code}
+}
 \end{frame}
 
 \begin{frame}[fragile]
