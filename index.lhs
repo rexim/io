@@ -253,8 +253,40 @@ whatIsYourPureName w1 = w4
       (w3, name) = readStr w2
       w4         = printStr ("Hello " ++ name) w3
 \end{code}
+\nextslide{curry}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{Currying}
+  \pause
+  \begin{minted}{javascript}
+function f(a, b) {
+    return a + b;
+}
+  \end{minted}
+  \pause
+  \begin{minted}{javascript}
+f(10, 20); // => 30
+  \end{minted}
+  \pause
+  \begin{minted}{javascript}
+function g(a) {
+    return function(b) {
+        return a + b;
+    };
+}
+  \end{minted}
+  \pause
+  \begin{minted}{javascript}
+g(10);     // => function(b) { return 10 + b };
+  \end{minted}
+  \pause
+  \begin{minted}{javascript}
+g(10)(20); // => 30
+  \end{minted}
+  \nextslide{worldT}
+\end{frame}
 %% TODO: Introduce World -> (World, a) and it's composition
 
 %% TODO: Introduce branching world problem
