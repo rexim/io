@@ -74,14 +74,15 @@ main = undefined
   \begin{textblock}{1.0}(12, 5)
     \includegraphics[scale=0.06]{imgs/youtube.png}
   \end{textblock}
-  \nextslide{hr}
+  \nextslide{hrank}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{HaskellRank}
   \begin{center}
-    %% TODO: QR code is to complex
-    \qrcode[height=2in]{https://www.youtube.com/playlist?list=PLguYJK7ydFE4aS8fq4D6DqjF6qsysxTnx}
+    \qrcode[height=2in]{https://bit.ly/haskellrank}
+
+    \url{https://bit.ly/haskellrank}
   \end{center}
 \nextslide{wipfp?}
 \end{frame}
