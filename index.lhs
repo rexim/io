@@ -223,12 +223,7 @@ data World = World
              deriving Show
 \end{code}
 }
-\nextslide{funcs}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Side-effects in Pure World}
-  \pause
+\pause
 \begin{code}
 printStr :: String -> World -> World
 \end{code}
