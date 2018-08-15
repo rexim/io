@@ -287,6 +287,20 @@ g(10)(20); // => 30
   \end{minted}
   \nextslide{worldT}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{World Transformer}
+  \pause
+\begin{code}
+type WorldT a = World -> (World, a)
+
+(>>>=) :: WorldT a
+       -> (a -> WorldT b)
+       -> WorldT b
+(>>>=) wt f = \w1 -> let (w2, x) = wt w1 in f x w2
+
+\end{code}
+\end{frame}
 %% TODO: Introduce World -> (World, a) and it's composition
 
 %% TODO: Introduce branching world problem
