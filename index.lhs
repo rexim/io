@@ -288,6 +288,7 @@ g(10)(20); // => 30
   \nextslide{worldT}
 \end{frame}
 
+%% TODO: explain the duality of time `a -> WorldT b` as `a -> World -> (World, b)`
 \begin{frame}[fragile]
   \frametitle{World Transformer}
   \pause
