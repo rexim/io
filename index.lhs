@@ -19,6 +19,7 @@
 %% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
 \begin{code}
+{-# LANGUAGE BangPatterns #-}
 import Control.Monad
 import Data.Array.IO
 import Data.Foldable
@@ -223,7 +224,7 @@ printStr :: String -> World -> World
 \end{code}
 \ignore{
 \begin{code}
-printStr s w = unsafePerformIO (putStrLn s >> return w)
+printStr s !w = unsafePerformIO (putStrLn s >> return w)
 \end{code}
 }
 \pause
@@ -232,19 +233,19 @@ readStr :: World -> (World, String)
 \end{code}
 \ignore{
 \begin{code}
-readStr w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
+readStr !w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
 \end{code}
 }
 \end{frame}
 
 \begin{frame}[fragile]
 \begin{code}
--- TODO: whatIsYourPureName doesn't perform actions in the right order
 whatIsYourPureName :: World -> World
 whatIsYourPureName w1 = w4
-    where w2         = printStr "What is your name?" w1
-          (w3, name) = readStr w2
-          w4         = printStr ("Hello " ++ name) w3
+    where
+      w2         = printStr "What is your name?" w1
+      (w3, name) = readStr w2
+      w4         = printStr ("Hello " ++ name) w3
 \end{code}
 \end{frame}
 
