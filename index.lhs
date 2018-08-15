@@ -305,7 +305,8 @@ printStrT s w = (printStr s w, ())
 (>>>=) :: WorldT a
        -> (a -> WorldT b)
        -> WorldT b
-(>>>=) wt f = \w1 -> let (w2, x) = wt w1 in f x w2
+(>>>=) wt f world1 = f x world2
+    where (world2, x) = wt world1
 
 \end{code}
 \end{frame}
