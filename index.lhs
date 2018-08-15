@@ -321,6 +321,15 @@ whatIsYourPureNameT =
 \end{code}
 \end{frame}
 
-%% TODO: Introduce branching world problem
+\begin{frame}[fragile]
+\begin{code}
+branch :: World -> (World, World)
+branch w =
+    (printStr "I love you!" w,
+     printStr "I hate you!" w)
+\end{code}
+\end{frame}
+
+%% TODO: How to solve branching problem
 
 \end{document}
