@@ -207,10 +207,12 @@ bubbleSort xs = do
   \begin{center}
     \Huge But what IO actually is?
   \end{center}
+  \nextslide{world}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Pure World}
+  \frametitle{Pure World}
+  \pause
 \begin{code}
 data World = World
 \end{code}
@@ -221,6 +223,7 @@ data World = World
              deriving Show
 \end{code}
 }
+\nextslide{funcs}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -243,6 +246,7 @@ readStr :: World -> (World, String)
 readStr !w = unsafePerformIO (getLine >>= (\s -> return (w, s)))
 \end{code}
 }
+\nextslide{wiypn?}
 \end{frame}
 
 \begin{frame}[fragile]
