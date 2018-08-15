@@ -173,7 +173,6 @@ whatIsYourName =
 \nextslide{qsort}
 \end{frame}
 
-%% \input{rulesofio.lhs}
 \begin{frame}[fragile]
   \frametitle{Quick Sort}
 \begin{code}
