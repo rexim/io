@@ -334,5 +334,6 @@ branch w =
 \end{frame}
 
 %% TODO: How to solve branching problem
+%% TODO: introduce WorldT later as the solution of branching problem?
 
 \end{document}
