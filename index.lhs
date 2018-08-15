@@ -20,6 +20,7 @@
 \ignore{
 \begin{code}
 {-# LANGUAGE BangPatterns #-}
+{-# LANGUAGE DeriveFunctor #-}
 import Control.Monad
 import Data.Array.IO
 import Data.Foldable
@@ -307,7 +308,8 @@ printStrT s w = ((), printStr s w)
        -> WorldT b
 -- TODO: explain uncurry
 -- TODO: explain how >>>= implementation makes sense
-(>>>=) wt f = uncurry f . wt
+-- TODO: >>>= should have the same precedence as >>=
+wt >>>= f = uncurry f . wt
 
 \end{code}
 \end{frame}
@@ -322,7 +324,37 @@ whatIsYourPureNameT =
 \end{code}
 \end{frame}
 
-%% TODO: integrate WorldT into the do-block
+%% TODO: WorldM complexity is just not worth explaning
+\begin{frame}[fragile]
+\begin{code}
+newtype WorldM a = WorldM { asT :: WorldT a } deriving Functor
+
+instance Applicative WorldM where
+    pure x = WorldM (\w -> (x, w))
+    wtf <*> wt = WorldM ((asT wtf) >>>= \f ->
+                         (asT wt)  >>>= \x ->
+                         (asT $ pure $ f x))
+
+instance Monad WorldM where
+    wt >>= f = WorldM ((asT wt) >>>= (asT . f))
+
+printStrM :: String -> WorldM ()
+printStrM = WorldM . printStrT
+
+readStrM :: WorldM String
+readStrM = WorldM readStrT
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{code}
+whatIsYourPureNameM :: WorldM ()
+whatIsYourPureNameM =
+    do printStrM "What is your name?"
+       name <- readStrM
+       printStrM ("Hello " ++ name)
+\end{code}
+\end{frame}
 
 \begin{frame}[fragile]
 \begin{code}
