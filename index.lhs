@@ -260,6 +260,8 @@ whatIsYourPureName w1 = w4
 \end{code}
 \end{frame}
 
+%% TODO: Introduce World -> (World, a) and it's composition
+
 %% TODO: Introduce branching world problem
 
 \end{document}
