@@ -25,6 +25,7 @@ import Control.Monad
 import Data.Array.IO
 import Data.Foldable
 import System.IO.Unsafe
+infixl 1  >>>=
 main = undefined
 \end{code}
 }
@@ -317,7 +318,6 @@ printStrT s w =
 \begin{code}
 -- TODO: explain uncurry
 -- TODO: explain how >>>= implementation makes sense
--- TODO: >>>= should have the same precedence as >>=
 wt >>>= f = uncurry f . wt
 
 \end{code}
@@ -340,12 +340,12 @@ newtype WorldM a = WorldM { asT :: WorldT a } deriving Functor
 
 instance Applicative WorldM where
     pure x = WorldM (\w -> (x, w))
-    wtf <*> wt = WorldM ((asT wtf) >>>= \f ->
-                         (asT wt)  >>>= \x ->
-                         (asT $ pure $ f x))
+    wtf <*> wt = WorldM (asT wtf >>>= \f ->
+                         asT wt  >>>= \x ->
+                         asT $ pure $ f x)
 
 instance Monad WorldM where
-    wt >>= f = WorldM ((asT wt) >>>= (asT . f))
+    wt >>= f = WorldM (asT wt >>>= asT . f)
 
 printStrM :: String -> WorldM ()
 printStrM = WorldM . printStrT
