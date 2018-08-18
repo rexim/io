@@ -288,24 +288,33 @@ g(10)(20); // => 30
   \nextslide{worldT}
 \end{frame}
 
-%% TODO: explain the duality of time `a -> WorldT b` as `a -> World -> (b, World)`
 \begin{frame}[fragile]
   \frametitle{World Transformer}
   \pause
 \begin{code}
-type WorldT a = World -> (a, World)
-
--- readStr :: World -> (World, String)
-readStrT :: WorldT String
+-- Type synonym. It's the "typedef" of Haskell.
+type WorldT a              = World -> (a, World)
+\end{code}
+\pause
+\begin{code}
+readStrT :: WorldT String -- World -> (String, World)
 readStrT = readStr
-
--- printStr :: String -> World -> World
-printStrT :: String -> WorldT ()
-printStrT s w = ((), printStr s w)
-
-(>>>=) :: WorldT a
-       -> (a -> WorldT b)
-       -> WorldT b
+\end{code}
+\pause
+\begin{code}
+printStrT :: String       -- String
+          -> WorldT ()    -- -> World -> ((), World)
+printStrT s w =
+    ((), printStr s w)
+\end{code}
+\pause
+\begin{code}
+(>>>=) :: WorldT a        -- World -> (a, World)
+       -> (a -> WorldT b) -- (a -> World -> (b, World))
+       -> WorldT b        -- World -> (b, World)
+\end{code}
+\pause
+\begin{code}
 -- TODO: explain uncurry
 -- TODO: explain how >>>= implementation makes sense
 -- TODO: >>>= should have the same precedence as >>=
