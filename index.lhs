@@ -257,6 +257,29 @@ whatIsYourPureName w1 = w4
 \nextslide{curry}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{``Branching'' Problem}
+\begin{code}
+branch :: World -> (World, World)
+branch w =
+    (printStr "I love you!" w,
+     printStr "I hate you!" w)
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{How to solve ``Branching'' Problem}
+\begin{itemize}
+\item Uniqueness type
+  \pause
+\item Hide World in World Transformer
+\end{itemize}
+\end{frame}
+
+%% TODO: mention that involving World is not the only solution
+
+%% TODO: mention languages that use Uniqueness type approach
+%% https://stackoverflow.com/questions/3850368/how-do-functional-languages-model-side-effects
 
 \begin{frame}[fragile]
   \frametitle{Currying}
@@ -365,16 +388,6 @@ whatIsYourPureNameM =
 \end{code}
 \end{frame}
 
-\begin{frame}[fragile]
-\begin{code}
-branch :: World -> (World, World)
-branch w =
-    (printStr "I love you!" w,
-     printStr "I hate you!" w)
-\end{code}
-\end{frame}
-
-%% TODO: How to solve branching problem
-%% TODO: introduce WorldT later as the solution of branching problem?
+%% TODO: reveal printStr and readStr solutions as a bonus
 
 \end{document}
