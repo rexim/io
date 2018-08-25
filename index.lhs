@@ -268,17 +268,37 @@ branch w =
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{How to solve ``Branching'' Problem}
-\begin{itemize}
-\item Uniqueness type
-  \pause
-\item Hide World in World Transformer
-\end{itemize}
+  \begin{center}
+    \Huge How to solve ``Branching'' Problem
+  \end{center}
 \end{frame}
 
-%% TODO: mention languages that use Uniqueness type approach
 %% https://stackoverflow.com/questions/3850368/how-do-functional-languages-model-side-effects
 %% https://clean.cs.ru.nl/Clean
+%% http://www.mbsd.cs.ru.nl/publications/papers/cleanbook/CleanBookI.pdf
+%% TODO: how does uniquness typing actually work?
+\begin{frame}[fragile]
+\frametitle{Uniquness type}
+\pause
+\begin{minted}{clean}
+module hello1
+import StdEnv
+
+Start :: *World -> *World
+Start world
+    # (console,world) = stdio world
+    # console = fwrites "Hello World.\n" console
+    # (ok,world) = fclose console world
+    | not ok = abort "Cannot close console.\n"
+    | otherwise = world
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
+    \Huge Make World Inaccessible
+  \end{center}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Currying}
@@ -390,3 +410,5 @@ whatIsYourPureNameM =
 %% TODO: reveal printStr and readStr solutions as a bonus
 
 \end{document}
+
+%% TODO: update all next slide refs
