@@ -278,6 +278,7 @@ branch w =
 
 %% TODO: mention languages that use Uniqueness type approach
 %% https://stackoverflow.com/questions/3850368/how-do-functional-languages-model-side-effects
+%% https://clean.cs.ru.nl/Clean
 
 \begin{frame}[fragile]
   \frametitle{Currying}
