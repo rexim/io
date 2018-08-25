@@ -276,8 +276,6 @@ branch w =
 \end{itemize}
 \end{frame}
 
-%% TODO: mention that involving World is not the only solution
-
 %% TODO: mention languages that use Uniqueness type approach
 %% https://stackoverflow.com/questions/3850368/how-do-functional-languages-model-side-effects
 
