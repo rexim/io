@@ -273,22 +273,64 @@ branch w =
   \end{center}
 \end{frame}
 
+\begin{frame}[fragile]
+  \begin{center}
+    \Huge Uniqueness Typing
+  \end{center}
+\end{frame}
+
 %% https://stackoverflow.com/questions/3850368/how-do-functional-languages-model-side-effects
 %% https://clean.cs.ru.nl/Clean
 %% http://www.mbsd.cs.ru.nl/publications/papers/cleanbook/CleanBookI.pdf
-%% TODO: how does uniquness typing actually work?
+%% https://en.wikipedia.org/wiki/Uniqueness_type
 \begin{frame}[fragile]
-\frametitle{Uniquness type}
+\frametitle{Uniqueness Type}
+\begin{code}
+-- Just a dummy marker to mark World as Unique
+data Unique a = Unique a
+\end{code}
 \pause
+
+\begin{code}
+-- printStr :: String -> World -> World
+printStrU :: String -> Unique World -> Unique World
+printStrU text (Unique w) = Unique (printStr text w)
+\end{code}
+\pause
+
+\begin{code}
+-- If we had unique types this would not compile
+branchUnique :: Unique World
+             -> (Unique World, Unique World)
+branchUnique w =
+    (printStrU "I love you" w,
+     printStrU "I hate you" w)
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Uniqueness Type}
+\begin{code}
+noBranching :: Unique World -> Unique World
+noBranching w1 = w3
+    where w2 = printStrU "I love you" w1
+          w3 = printStrU "I hate you" w2
+\end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Clean Programming Language}
 \begin{minted}{clean}
 module hello1
 import StdEnv
 
 Start :: *World -> *World
 Start world
+    // defining bindings
     # (console,world) = stdio world
     # console = fwrites "Hello World.\n" console
     # (ok,world) = fclose console world
+    // condition branches
     | not ok = abort "Cannot close console.\n"
     | otherwise = world
 \end{minted}
@@ -378,7 +420,8 @@ whatIsYourPureNameT =
 %% TODO: WorldM complexity is just not worth explaning
 \begin{frame}[fragile]
 \begin{code}
-newtype WorldM a = WorldM { asT :: WorldT a } deriving Functor
+newtype WorldM a = WorldM { asT :: WorldT a }
+                   deriving Functor
 
 instance Applicative WorldM where
     pure x = WorldM (\w -> (x, w))
