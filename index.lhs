@@ -388,9 +388,8 @@ readStrT = readStr
 \pause
 \begin{code}
 printStrT :: String       -- String
-          -> WorldT ()    -- -> World -> ((), World)
-printStrT s w =
-    ((), printStr s w)
+          -> WorldT ()     -- -> World -> ((), World)
+printStrT s w = ((), printStr s w)
 \end{code}
 \pause
 \begin{code}
@@ -401,10 +400,40 @@ printStrT s w =
 \pause
 \begin{code}
 -- TODO: explain uncurry
--- TODO: explain how >>>= implementation makes sense
 wt >>>= f = uncurry f . wt
 
 \end{code}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Interalias Composition}
+\begin{minted}{haskell}
+(>>>=) :: WorldT a -> (a -> WorldT b) -> WorldT b
+wt >>>= f = uncurry f . wt
+\end{minted}
+\pause
+\hrule
+\begin{minted}{haskell}
+wt               :: WorldT a
+wt               :: World -> (a, World)
+\end{minted}
+\pause
+\hrule
+\begin{minted}{haskell}
+f                :: a -> WorldT b
+f                :: a -> World -> (b, World)
+\end{minted}
+\pause
+\hrule
+\begin{minted}{haskell}
+(uncurry f)      :: (a, World) -> (b, World)
+\end{minted}
+\pause
+\hrule
+\begin{minted}{haskell}
+(uncurry f . wt) :: WorldT b
+(uncurry f . wt) :: World -> (b, World)
+\end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
