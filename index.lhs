@@ -15,6 +15,7 @@
 {\color{gray} \tiny #1}%
 \end{textblock}%
 }
+%% TODO: use \hrule in every code step explanations
 
 %% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
@@ -374,6 +375,21 @@ g(10)(20); // => 30
 \end{frame}
 
 \begin{frame}[fragile]
+\frametitle{Uncurrying}
+  \begin{minted}{javascript}
+function uncurry(f) {
+    return function(a, b) {
+        return f(a)(b)
+    }
+}
+  \end{minted}
+  \pause
+  \begin{minted}{haskell}
+uncurry :: (a -> b -> c) -> (a, b) -> c
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{World Transformer}
   \pause
 \begin{code}
@@ -388,7 +404,7 @@ readStrT = readStr
 \pause
 \begin{code}
 printStrT :: String       -- String
-          -> WorldT ()     -- -> World -> ((), World)
+          -> WorldT ()    -- -> World -> ((), World)
 printStrT s w = ((), printStr s w)
 \end{code}
 \pause
@@ -399,9 +415,7 @@ printStrT s w = ((), printStr s w)
 \end{code}
 \pause
 \begin{code}
--- TODO: explain uncurry
 wt >>>= f = uncurry f . wt
-
 \end{code}
 \end{frame}
 
