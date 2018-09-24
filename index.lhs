@@ -462,22 +462,36 @@ whatIsYourPureNameT =
 
 %% TODO: WorldM complexity is just not worth explaning
 \begin{frame}[fragile]
+  \frametitle{Integrating with do-notation}
+  \pause
 \begin{code}
 newtype WorldM a = WorldM { asT :: WorldT a }
                    deriving Functor
-
+\end{code}
+\pause
+\hrule
+\begin{code}
 instance Applicative WorldM where
     pure x = WorldM (\w -> (x, w))
     wtf <*> wt = WorldM (asT wtf >>>= \f ->
                          asT wt  >>>= \x ->
                          asT $ pure $ f x)
-
+\end{code}
+\pause
+\hrule
+\begin{code}
 instance Monad WorldM where
     wt >>= f = WorldM (asT wt >>>= asT . f)
-
+\end{code}
+\pause
+\hrule
+\begin{code}
 printStrM :: String -> WorldM ()
 printStrM = WorldM . printStrT
-
+\end{code}
+\pause
+\hrule
+\begin{code}
 readStrM :: WorldM String
 readStrM = WorldM readStrT
 \end{code}
