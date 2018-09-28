@@ -523,3 +523,4 @@ whatIsYourPureNameM =
 \end{document}
 
 %% TODO: update all next slide refs
+%% TODO: translate presentation to russian
