@@ -15,7 +15,6 @@
 {\color{gray} \tiny #1}%
 \end{textblock}%
 }
-%% TODO: use \hrule in every code step explanations
 
 %% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
@@ -136,16 +135,19 @@ main = undefined
 -- Comments just like in SQL
 \end{code}
 \pause
+\hrule
 \begin{code}
 int :: Int               -- Signature
 int = 42                 -- Definition
 \end{code}
 \pause
+\hrule
 \begin{code}
 intIO :: IO Int          -- (IO Int) holds Int
 intIO = return 42        -- return wraps Int into IO
 \end{code}
 \pause
+\hrule
 \begin{code}
 intString :: IO String   -- (IO String) holds String
 intString = return "Foo" -- return wraps String into IO
@@ -226,6 +228,7 @@ data World = World
 \end{code}
 }
 \pause
+\hrule
 \begin{code}
 printStr :: String -> World -> World
 \end{code}
@@ -235,6 +238,7 @@ printStr s !w = unsafePerformIO (putStrLn s >> return w)
 \end{code}
 }
 \pause
+\hrule
 \begin{code}
 readStr :: World -> (String, World)
 \end{code}
@@ -291,14 +295,14 @@ branch w =
 data Unique a = Unique a
 \end{code}
 \pause
-
+\hrule
 \begin{code}
 -- printStr :: String -> World -> World
 printStrU :: String -> Unique World -> Unique World
 printStrU text (Unique w) = Unique (printStr text w)
 \end{code}
 \pause
-
+\hrule
 \begin{code}
 -- If we had unique types this would not compile
 branchUnique :: Unique World
@@ -384,6 +388,7 @@ function uncurry(f) {
 }
   \end{minted}
   \pause
+  \hrule
   \begin{minted}{haskell}
 uncurry :: (a -> b -> c) -> (a, b) -> c
   \end{minted}
@@ -397,23 +402,27 @@ uncurry :: (a -> b -> c) -> (a, b) -> c
 type WorldT a              = World -> (a, World)
 \end{code}
 \pause
+\hrule
 \begin{code}
 readStrT :: WorldT String -- World -> (String, World)
 readStrT = readStr
 \end{code}
 \pause
+\hrule
 \begin{code}
 printStrT :: String       -- String
           -> WorldT ()    -- -> World -> ((), World)
 printStrT s w = ((), printStr s w)
 \end{code}
 \pause
+\hrule
 \begin{code}
 (>>>=) :: WorldT a        -- World -> (a, World)
        -> (a -> WorldT b) -- (a -> World -> (b, World))
        -> WorldT b        -- World -> (b, World)
 \end{code}
 \pause
+\hrule
 \begin{code}
 wt >>>= f = uncurry f . wt
 \end{code}
@@ -517,7 +526,6 @@ whatIsYourPureNameM =
        printStrM ("Hello " ++ name)
 \end{code}
 \end{frame}
-
 
 \begin{frame}[fragile]
   \begin{center}
