@@ -518,6 +518,12 @@ whatIsYourPureNameM =
 \end{code}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \begin{center}
+    \Huge Questions?
+  \end{center}
+\end{frame}
 \end{document}
 
 %% TODO: update all next slide refs
