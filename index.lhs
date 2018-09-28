@@ -518,8 +518,6 @@ whatIsYourPureNameM =
 \end{code}
 \end{frame}
 
-%% TODO: reveal printStr and readStr solutions as a bonus
-
 \end{document}
 
 %% TODO: update all next slide refs
