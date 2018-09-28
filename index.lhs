@@ -460,7 +460,18 @@ whatIsYourPureNameT =
 \end{code}
 \end{frame}
 
-%% TODO: WorldM complexity is just not worth explaning
+\begin{frame}[fragile]
+\frametitle{Integrating with do-notation}
+\pause
+We need to prove
+\begin{itemize}
+\pause
+\item \verb|WorldT| is a Monad
+\pause
+\item \verb|>>>=| is equivalent to \verb|>>=|
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Integrating with do-notation}
   \pause
