@@ -10,12 +10,6 @@
 \newenvironment{code}{\VerbatimEnvironment\begin{minted}{haskell}}{\end{minted}}
 \long\def\ignore#1{}
 
-\newcommand{\nextslide}[1]{%
-\begin{textblock}{1.0}(15,15)%
-{\color{gray} \tiny #1}%
-\end{textblock}%
-}
-
 %% Hiden Haskell stuff required by GHC to compile properly
 \ignore{
 \begin{code}
@@ -40,7 +34,7 @@ main = undefined
 
 \begin{frame}
   %% Blank
-\nextslide{who?}
+
 \end{frame}
 
 \begin{frame}
@@ -53,7 +47,7 @@ main = undefined
 \item Occasional Freelancer \pause
 \item Jack of All Trades
 \end{itemize}
-\nextslide{tso}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -77,7 +71,7 @@ main = undefined
   \begin{textblock}{1.0}(12, 5)
     \includegraphics[scale=0.06]{imgs/youtube.png}
   \end{textblock}
-  \nextslide{hrank}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -87,14 +81,14 @@ main = undefined
 
     \url{https://bit.ly/haskellrank}
   \end{center}
-\nextslide{wipfp?}
+
 \end{frame}
 
 \begin{frame}[fragile]
   \begin{center}
     \Huge What is Pure FP?
   \end{center}
-  \nextslide{wipp?}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -108,7 +102,7 @@ main = undefined
       ...
     }
   \end{minted}
-  \nextslide{wipfp?}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -118,14 +112,14 @@ main = undefined
   \item \verb|f1(f2(f3(...)))| \pause
   \item $f_1 \circ f_2 \circ f_3 \circ \ldots \circ f_n $
   \end{itemize}
-  \nextslide{wiio?}
+
 \end{frame}
 
 \begin{frame}[fragile]
   \begin{center}
     \Huge What is IO?
   \end{center}
-  \nextslide{cont}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -152,7 +146,7 @@ intIO = return 42        -- return wraps Int into IO
 intString :: IO String   -- (IO String) holds String
 intString = return "Foo" -- return wraps String into IO
 \end{code}
-\nextslide{action}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -163,7 +157,7 @@ putStrLn :: String -> IO () -- () is "void" type
 readFile :: FilePath -> IO String
 system :: String -> IO ExitCode
 \end{minted}
-\nextslide{do}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -175,7 +169,7 @@ whatIsYourName =
        name <- getLine   -- arrow unwraps IO
        putStrLn ("Hello " ++ name)
 \end{code}
-\nextslide{qsort}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -187,7 +181,7 @@ qsort (p:xs) = qsort left ++ [p] ++ qsort right
   where left  = [x | x <- xs, x <= p]
         right = [x | x <- xs, x >  p]
 \end{code}
-\nextslide{bubble}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -204,14 +198,14 @@ bubbleSort xs = do
             do writeArray xs i y
                writeArray xs j x
 \end{code}
-\nextslide{wiio?}
+
 \end{frame}
 
 \begin{frame}
   \begin{center}
     \Huge But what IO actually is?
   \end{center}
-  \nextslide{world}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -247,7 +241,7 @@ readStr :: World -> (String, World)
 readStr !w = unsafePerformIO (getLine >>= (\s -> return (s, w)))
 \end{code}
 }
-\nextslide{wiypn?}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -259,11 +253,12 @@ whatIsYourPureName w1 = w4
       (name, w3) = readStr w2
       w4         = printStr ("Hello " ++ name) w3
 \end{code}
-\nextslide{curry}
+
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{``Branching'' Problem}
+\pause
 \begin{code}
 branch :: World -> (World, World)
 branch w =
@@ -290,6 +285,7 @@ branch w =
 %% https://en.wikipedia.org/wiki/Uniqueness_type
 \begin{frame}[fragile]
 \frametitle{Uniqueness Type}
+\pause
 \begin{code}
 -- Just a dummy marker to mark World as Unique
 data Unique a = Unique a
@@ -325,6 +321,7 @@ noBranching w1 = w3
 
 \begin{frame}[fragile]
 \frametitle{Clean Programming Language}
+\pause
 \begin{minted}{clean}
 module hello1
 import StdEnv
@@ -375,11 +372,12 @@ g(10);     // => function(b) { return 10 + b };
   \begin{minted}{javascript}
 g(10)(20); // => 30
   \end{minted}
-  \nextslide{worldT}
+
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Uncurrying}
+\pause
   \begin{minted}{javascript}
 function uncurry(f) {
     return function(a, b) {
@@ -430,6 +428,7 @@ wt >>>= f = uncurry f . wt
 
 \begin{frame}[fragile]
 \frametitle{Interalias Composition}
+\pause
 \begin{minted}{haskell}
 (>>>=) :: WorldT a -> (a -> WorldT b) -> WorldT b
 wt >>>= f = uncurry f . wt
@@ -534,5 +533,4 @@ whatIsYourPureNameM =
 \end{frame}
 \end{document}
 
-%% TODO: update all next slide refs
 %% TODO: translate presentation to russian
