@@ -173,7 +173,7 @@ whatIsYourName =
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Quick Sort}
+  \frametitle{Quick Sort (declarative)}
 \begin{code}
 qsort :: [Int] -> [Int]
 qsort [] = []
@@ -185,7 +185,7 @@ qsort (p:xs) = qsort left ++ [p] ++ qsort right
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Bubble Sort}
+\frametitle{Bubble Sort (imperative)}
 \begin{code}
 bubbleSort :: IOArray Int Int -> IO ()
 bubbleSort xs = do
