@@ -532,5 +532,3 @@ whatIsYourPureNameM =
   \end{center}
 \end{frame}
 \end{document}
-
-%% TODO: translate presentation to russian
