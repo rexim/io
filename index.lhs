@@ -528,6 +528,13 @@ whatIsYourPureNameM =
 
 \begin{frame}[fragile]
   \begin{center}
+    \Huge Congratulations! \\
+    \Huge We reinvented IO!
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{center}
     \Huge Questions?
   \end{center}
 \end{frame}
